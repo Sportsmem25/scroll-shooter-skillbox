@@ -37,6 +37,7 @@ public class ScenesController : MonoBehaviour
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ContinueGame();
     }
 
     /// <summary>
