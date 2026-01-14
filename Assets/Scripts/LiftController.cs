@@ -2,14 +2,20 @@ using UnityEngine;
 
 public class LiftController : MonoBehaviour
 {
+    public bool IsLiftTrigger
+    {
+        get { return isLiftTrigger; }
+        set { isLiftTrigger = value; }
+    }
+
     [SerializeField] private Transform target1;
     [SerializeField] private Transform target2;
     [SerializeField] private Transform target3;
     [SerializeField] private AudioSource source;
     [SerializeField] private Collider2D coll;
 
-    public bool isLiftTrigger = false;
-    public int currentQuantityKeyCard;
+    private bool isLiftTrigger = false;
+    private int currentQuantityKeyCard;
     private Rigidbody2D rb;
     private SliderJoint2D sj;
 
@@ -39,6 +45,11 @@ public class LiftController : MonoBehaviour
         }
     }
 
+    public void AddKeyCard()
+    {
+        currentQuantityKeyCard++;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -62,7 +73,6 @@ public class LiftController : MonoBehaviour
     {
         if (isLiftTrigger == false)
         {
-            Debug.Log("lift moving");
             rb.bodyType = RigidbodyType2D.Dynamic;
             sj.useMotor = true;
         }

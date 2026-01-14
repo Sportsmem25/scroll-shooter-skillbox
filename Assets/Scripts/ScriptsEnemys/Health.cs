@@ -5,50 +5,43 @@ public class Health : MonoBehaviour
 {
     [Header("Health")]
     [SerializeField] private int startingHealth;
-    public float currentHealth { get; private set; }
-    public int countScore;
-    private Animator anim;
-    private bool dead;
+    public float ÑurrentHealth { get; private set; }
 
     [Header("Components")]
     [SerializeField] private Behaviour[] components;
     [SerializeField] private AudioClip deadSound;
 
-    public static UnityEvent<int> OnEnemyKill = new UnityEvent<int>();
+    public UnityEvent OnDeath;
+    private Animator anim;
+    private bool dead;
 
     private void Awake()
     {
-        currentHealth = startingHealth;
+        ÑurrentHealth = startingHealth;
         anim = GetComponent<Animator>();
     }
 
     public void TakeDamage(float _damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+        ÑurrentHealth = Mathf.Clamp(ÑurrentHealth - _damage, 0, startingHealth);
 
-        if (currentHealth > 0)
+        if (ÑurrentHealth > 0)
         {
             anim.SetTrigger("hurt");
         }
         else
         {
-            if (!dead)
-            {
-                anim.SetTrigger("death");
-                SendEnemyKills(countScore);
-
-                //Deactivate attached component classes
-                foreach (Behaviour component in components)
-                    component.enabled = false;
-
-                dead = true;
-                SoundManager.instance.PlaySound(deadSound);
-            }
+            EnemyDied();
         }
     }
 
-    public void SendEnemyKills(int countScore)
+    private void EnemyDied()
     {
-        OnEnemyKill.Invoke(countScore);
+        dead = true;
+        anim.SetTrigger("death");
+        SoundManager.instance.PlaySound(deadSound);
+        OnDeath?.Invoke();
+        foreach (Behaviour component in components)
+            component.enabled = false;
     }
 }

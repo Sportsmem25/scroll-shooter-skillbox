@@ -4,28 +4,37 @@ using UnityEngine.UI;
 
 public class ScoreCount : MonoBehaviour
 {
+    public static ScoreCount Instance;
+
     [SerializeField] private Text scoreText;
     [SerializeField] private ScenesController scenesController;
-    private int killed = 0;
+
+    private int winScore = 290;
+    private int score;
 
     private void Awake()
     {
-        Health.OnEnemyKill.AddListener(EnemyKilled);
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
-    private void Update()
+    public static void AddScore(int amount)
     {
-        if(killed >= 290)
-        {
-            StartCoroutine(EnableWinScene());
-        }
+        Instance.score += amount;
+        Debug.Log($"Скрипт ScoreCount - Начисляем {amount}. Сейчас {Instance.score} очков.");
+        Instance.UpdateUI();
+
+        if (Instance.score >= Instance.winScore)
+            Instance.StartCoroutine(Instance.EnableWinScene());
     }
 
-    private void EnemyKilled(int countScore)
+    private void UpdateUI()
     {
-        killed += countScore;
-        scoreText.text = "Score: " + killed;
+        scoreText.text = "Score: " + score;
     }
+
 
     IEnumerator EnableWinScene()
     {

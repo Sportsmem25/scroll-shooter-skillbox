@@ -9,7 +9,7 @@ public class EnemyDamage : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<HealthSystem>(out var health))
         {
-            if(health.health > 0)
+            if(health.Health > 0)
             {
                 SoundManager.instance.PlaySound(enemyDamageSound);
                 health.TakeDamage(enemyDamage);

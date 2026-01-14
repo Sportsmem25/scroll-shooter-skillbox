@@ -10,7 +10,7 @@ public class ReplenishmentAmmo : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             SoundManager.instance.PlaySound(pickUpAmmoSound);
-            playerShooting.totalBullet += 30;
+            playerShooting.AddAmmo();
         }
         GameObject.Destroy(transform.parent.gameObject);
     }

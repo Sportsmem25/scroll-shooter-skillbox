@@ -4,21 +4,20 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] private float m_JumpForce = 400f;
-    [Range(0, .3f)][SerializeField] private float m_MovementSmoothing = 0.05f;   // How much to smooth out the movement
-    [SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
-    [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
-    [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
-    [SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
-    [SerializeField] private Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private AudioClip jumpSound;
-    public const float k_GroundedRadius = 0.2f; // Radius of the overlap circle to determine if grounded
-    private bool m_Grounded;            // Whether or not the player is grounded.
-    private Rigidbody2D rb;
-    private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+    [SerializeField] private float m_JumpForce = 400f;                          // Сила прыжка
+    [Range(0, .3f)][SerializeField] private float m_MovementSmoothing = 0.05f;  // Сглаживание движения
+    [SerializeField] private bool m_AirControl = false;                         // Может ли игрок управлять персонажем в прыжке
+    [SerializeField] private LayerMask m_WhatIsGround;                          // Слой показывающий что является землей для игрока
+    [SerializeField] private Transform m_GroundCheck;                           // Позиция показывающая столкнулся ли игрок с землей
+    [SerializeField] private Transform firePoint;                               // Позиция выстрела
+    [SerializeField] private AudioClip jumpSound;                               // Звук прыжка
+    
+    private const float GROUNDEDRADIUS = 0.2f;                                 // Радиус круга для определения столкновения с землей
+    private bool m_Grounded;                                                    // Проверка на земле ли игрок
+    private bool m_FacingRight = true;                                          // Проверка в какую сторону смотрит игрок
     private Vector3 m_Velocity = Vector3.zero;
     private Animator anim;
+    private Rigidbody2D rb;
 
     [Header("Events")]
     [Space]
@@ -36,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         bool _wasGrounded = m_Grounded;
         m_Grounded = false;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, GROUNDEDRADIUS, m_WhatIsGround);
         for(int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].gameObject != gameObject)

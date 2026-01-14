@@ -6,7 +6,6 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private Transform enemy;
     [SerializeField] private Transform leftEdge;
     [SerializeField] private Transform rightEdge;
-    
     [SerializeField] private float speed;
     [SerializeField] private float idleDuration;
     

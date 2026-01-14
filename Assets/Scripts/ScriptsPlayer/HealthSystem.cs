@@ -4,20 +4,22 @@ using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
-    public int health;
-    public int numberOfLives;
-    public Image[] lives;
-    public Sprite fullLive;
-    public Sprite emptyLive;
-    
+    public int Health => health;
+
+    [SerializeField] private Image[] lives;
+    [SerializeField] private Sprite fullLive;
+    [SerializeField] private Sprite emptyLive;
     [SerializeField] private Behaviour[] components;
     [SerializeField] private AudioClip deadSound;
-    [SerializeField] private ScenesController scenesController;
+    private ScenesController scenesController;
     private PlayerController controller;
+    private int numberOfLives = 6;
+    private int health = 6;
 
     private void Start()
     {
         controller = GetComponent<PlayerController>();
+        scenesController = FindObjectOfType<ScenesController>();
     }
 
 

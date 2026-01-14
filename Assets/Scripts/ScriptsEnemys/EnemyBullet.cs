@@ -5,6 +5,7 @@ public class EnemyBullet : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float resetTime;
     [SerializeField] private int damage;
+
     private float lifetime;
     private Animator anim;
     private BoxCollider2D coll;

@@ -31,7 +31,7 @@ public class RangedEnemyController : MonoBehaviour
 
         if (PlayerInSignt())
         {
-                if (reloadTimer >= attackCooldown && hs.health > 0)
+                if (reloadTimer >= attackCooldown && hs.Health > 0)
                 {
                     reloadTimer = 0;
                     anim.SetTrigger("rangedAttack");

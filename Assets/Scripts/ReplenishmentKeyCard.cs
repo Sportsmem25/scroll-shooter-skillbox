@@ -9,7 +9,7 @@ public class ReplenishmentKeyCard : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Player"))
         {
-            liftController.currentQuantityKeyCard += 1;
+            liftController.AddKeyCard();
             SoundManager.instance.PlaySound(soundSetCard);
             Destroy(gameObject);
         }

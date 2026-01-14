@@ -8,8 +8,7 @@ public class LiftFloorTrigger : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Lift"))
         {
-            liftContr.isLiftTrigger = true;
-            Debug.Log("коснулись");
+            liftContr.IsLiftTrigger = true;
             gameObject.SetActive(false);
         }
     }

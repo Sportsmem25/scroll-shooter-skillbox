@@ -250,6 +250,7 @@ GameObject:
   - component: {fileID: 6024233180699817400}
   - component: {fileID: 6024233180699817401}
   - component: {fileID: 6024233180699817350}
+  - component: {fileID: 5850775337450570809}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Enemy
@@ -449,14 +450,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
-  countScore: 20
   components:
   - {fileID: 6024233180699817403}
   - {fileID: 6024233180699817401}
   - {fileID: 6024233179757169564}
   - {fileID: 6024233180699817400}
   - {fileID: 6024233180699817402}
+  - {fileID: 5850775337450570809}
   deadSound: {fileID: 8300000, guid: f952268b7d9b44e45938c10a753672d3, type: 3}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5850775337450570809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024233180699817406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908c1c448433e494083341119af16dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 20
 --- !u!1001 &2937493610047396175
 PrefabInstance:
   m_ObjectHideFlags: 0

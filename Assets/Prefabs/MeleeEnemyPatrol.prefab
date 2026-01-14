@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 7404532275591833596}
   - component: {fileID: 7404532275591833475}
   - component: {fileID: 7404532275591833592}
+  - component: {fileID: 3170961521800165870}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: Untagged
@@ -271,13 +272,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
-  countScore: 10
   components:
   - {fileID: 7404532275591833475}
   - {fileID: 7404532274989453687}
   - {fileID: 7404532275591833597}
   - {fileID: 7404532275591833474}
+  - {fileID: 3170961521800165870}
   deadSound: {fileID: 8300000, guid: f952268b7d9b44e45938c10a753672d3, type: 3}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3170961521800165870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7404532275591833473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908c1c448433e494083341119af16dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 10
 --- !u!1 &7404532275843393512
 GameObject:
   m_ObjectHideFlags: 0

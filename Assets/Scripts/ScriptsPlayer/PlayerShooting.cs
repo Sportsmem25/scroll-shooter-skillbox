@@ -11,8 +11,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private AudioClip reloadSound;
     [SerializeField] private ScenesController sceneContr;
 
-    public int currentBullet;
-    public int totalBullet;
+    private int currentBullet = 30;
+    private int totalBullet = 30;
     
     void Update()
     {
@@ -37,6 +37,11 @@ public class PlayerShooting : MonoBehaviour
         {
             currentBullet = 0;
         }
+    }
+
+    public void AddAmmo()
+    {
+        totalBullet += 30;
     }
 
     private void Shoot()

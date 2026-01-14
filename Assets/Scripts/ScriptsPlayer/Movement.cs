@@ -2,11 +2,17 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public PlayerController controller;
     [SerializeField] private float speed = 40f;
     [SerializeField] private Animator anim;
+
+    private PlayerController controller;
     private float horizontalMove = 0f;
     private bool jump;
+
+    private void Start()
+    {
+        controller = GetComponent<PlayerController>();
+    }
 
     void Update()
     {

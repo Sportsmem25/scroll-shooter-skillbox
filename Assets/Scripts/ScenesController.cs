@@ -8,7 +8,7 @@ public class ScenesController : MonoBehaviour
     public bool _iscanShootPlayer;
 
     /// <summary>
-    /// Метод загружающий уровень
+    /// Загрузка уровня
     /// </summary>
     public void LoadScene()
     {
@@ -16,7 +16,7 @@ public class ScenesController : MonoBehaviour
     }
 
     /// <summary>
-    /// Метод загружающий стартовую сцену
+    /// Загрузка стартовой сцены
     /// </summary>
     public void LoadStartScene()
     {
@@ -24,7 +24,7 @@ public class ScenesController : MonoBehaviour
     }
 
     /// <summary>
-    /// Метод загружающий следующую сцену
+    /// Загрузка следующей сцены
     /// </summary>
     public void LoadNextScene()
     {
@@ -32,7 +32,7 @@ public class ScenesController : MonoBehaviour
     }
 
     /// <summary>
-    /// Метод перезагрузки сцены
+    /// Перезагрузка сцены
     /// </summary>
     public void RestartScene()
     {
@@ -41,7 +41,7 @@ public class ScenesController : MonoBehaviour
     }
 
     /// <summary>
-    /// Метод загружающий победную сцену
+    /// Загрузка победной сцены
     /// </summary>
     public void LoadWinScene()
     {
@@ -49,7 +49,7 @@ public class ScenesController : MonoBehaviour
     }
 
     /// <summary>
-    /// Метод загружающий сцену проигрыша
+    /// Загрузка сцены проигрыша
     /// </summary>
     public void LoadLoseScene()
     {
@@ -62,6 +62,7 @@ public class ScenesController : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+
     #if Unity_Editor
         UnityEditor.EditorApplication.isPlaying = false; // Exit play mode
     #endif
